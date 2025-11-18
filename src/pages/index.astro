@@ -1,10 +1,62 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SiteMaintenance from '../components/templates/SiteMaintenance.astro';
 ---
 
 <Layout>
-	<h1>Hola mundo</h1>
-	<p>Hola diablo</p>
-	<SiteMaintenance />
+	<section class="max-w-3xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
+		<!-- Nombre -->
+		<h1 class="text-4xl font-bold mb-2 text-gray-900">Enrique Sánchez</h1>
+		<p class="text-lg text-gray-600 mb-4">Desarrollador Web | Técnico en Informática | Creador de contenido</p>
+
+		<!-- Datos -->
+		<div class="space-y-2 mb-6">
+			<p><strong>Email:</strong> tu-correo@example.com</p>
+			<p><strong>Ubicación:</strong> México</p>
+			<p><strong>GitHub:</strong> <a class="text-blue-600" href="https://github.com/sanchezkike133" target="_blank">sanchezkike133</a></p>
+		</div>
+
+		<hr class="my-6" />
+
+		<!-- Perfil -->
+		<h2 class="text-2xl font-semibold mb-3">Perfil Profesional</h2>
+		<p class="text-gray-700 leading-relaxed">
+			Soy un desarrollador apasionado por crear soluciones web modernas, experimentado con Linux,
+			github, redes y electrónica. Me gusta aprender, construir proyectos y mejorar constantemente.
+		</p>
+
+		<hr class="my-6" />
+
+		<!-- Habilidades -->
+		<h2 class="text-2xl font-semibold mb-3">Habilidades</h2>
+		<ul class="list-disc pl-5 text-gray-700 space-y-1">
+			<li>Desarrollo Web (HTML, CSS, JavaScript, Astro)</li>
+			<li>Administración de Linux (Debian, Ubuntu)</li>
+			<li>Git y GitHub</li>
+			<li>Electrónica básica y microcontroladores</li>
+			<li>Networking — VLSM, Packet Tracer</li>
+		</ul>
+
+		<hr class="my-6" />
+
+		<!-- Experiencia -->
+		<h2 class="text-2xl font-semibold mb-3">Experiencia</h2>
+		<ul class="list-disc pl-5 text-gray-700 space-y-1">
+			<li>Desarrollo de proyectos personales — Godot, web apps, BSC Tokens</li>
+			<li>Prácticas escolares de redes y electrónica</li>
+			<li>Soporte técnico y mantenimiento de equipos</li>
+		</ul>
+
+		<hr class="my-6" />
+
+		<!-- Blog -->
+		<h2 class="text-2xl font-semibold mb-3">Blog Personal</h2>
+		<p class="text-gray-700">
+			Escribo artículos sobre tecnología, programación, electrónica y mis proyectos.
+			Visita mis publicaciones aquí:
+		</p>
+
+		<a href="/blog" class="inline-block mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+			Ir al Blog
+		</a>
+	</section>
 </Layout>
