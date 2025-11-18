@@ -1,62 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 ---
 
 <Layout>
-	<section class="max-w-3xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg">
-		<!-- Nombre -->
-		<h1 class="text-4xl font-bold mb-2 text-gray-900">Enrique Sánchez</h1>
-		<p class="text-lg text-gray-600 mb-4">Desarrollador Web | Técnico en Informática | Creador de contenido</p>
+  <!-- Menú de navegación -->
+  <nav class="fixed top-0 left-0 w-full p-4 bg-gray-800 text-white flex justify-center space-x-6 z-50">
+    <a href="#principal" class="hover:underline">Principal</a>
+    <a href="#habilidades" class="hover:underline">Habilidades</a>
+    <a href="#proyectos" class="hover:underline">Proyectos</a>
+    <a href="#contacto" class="hover:underline">Contacto</a>
+  </nav>
 
-		<!-- Datos -->
-		<div class="space-y-2 mb-6">
-			<p><strong>Email:</strong> tu-correo@example.com</p>
-			<p><strong>Ubicación:</strong> México</p>
-			<p><strong>GitHub:</strong> <a class="text-blue-600" href="https://github.com/sanchezkike133" target="_blank">sanchezkike133</a></p>
-		</div>
+  <!-- Sección Principal -->
+  <section id="principal" class="min-h-screen flex flex-col items-center justify-center bg-blue-100">
+    <h1 class="text-5xl font-bold">Hola, soy Kike</h1>
+    <p class="mt-4 text-xl">Bienvenido a mi portafolio</p>
+  </section>
 
-		<hr class="my-6" />
+  <!-- Sección Habilidades -->
+  <section id="habilidades" class="min-h-screen p-8 bg-gray-100">
+    <h2 class="text-3xl font-bold mb-4">Habilidades</h2>
+    <ul class="list-disc ml-6 space-y-2">
+      <li>HTML / CSS / JavaScript</li>
+      <li>Astro / TailwindCSS</li>
+      <li>GitHub</li>
+      <li>Node.js / npm</li>
+	  <li>Circuitos electronicos con arduino</li>
 
-		<!-- Perfil -->
-		<h2 class="text-2xl font-semibold mb-3">Perfil Profesional</h2>
-		<p class="text-gray-700 leading-relaxed">
-			Soy un desarrollador apasionado por crear soluciones web modernas, experimentado con Linux,
-			github, redes y electrónica. Me gusta aprender, construir proyectos y mejorar constantemente.
-		</p>
+    </ul>
+  </section>
 
-		<hr class="my-6" />
+  <!-- Sección Proyectos -->
+  <section id="proyectos" class="min-h-screen p-8 bg-white">
+    <h2 class="text-3xl font-bold mb-4">Proyectos</h2>
+    <ul class="list-disc ml-6 space-y-2">
+      <li><a href="https://github.com/sanchezkike133/proyecto1" target="_blank" class="text-blue-600 hover:underline">Proyectos con c++</a></li>
+      <li><a href="https://github.com/sanchezkike133/proyecto2" target="_blank" class="text-blue-600 hover:underline">Proyecto con flask</a></li>
+      <li><a href="https://github.com/sanchezkike133/proyecto3" target="_blank" class="text-blue-600 hover:underline">Proyecto con arduino</a></li>
+    </ul>
+  </section>
 
-		<!-- Habilidades -->
-		<h2 class="text-2xl font-semibold mb-3">Habilidades</h2>
-		<ul class="list-disc pl-5 text-gray-700 space-y-1">
-			<li>Desarrollo Web (HTML, CSS, JavaScript, Astro)</li>
-			<li>Administración de Linux (Debian, Ubuntu)</li>
-			<li>Git y GitHub</li>
-			<li>Electrónica básica y microcontroladores</li>
-			<li>Networking — VLSM, Packet Tracer</li>
-		</ul>
-
-		<hr class="my-6" />
-
-		<!-- Experiencia -->
-		<h2 class="text-2xl font-semibold mb-3">Experiencia</h2>
-		<ul class="list-disc pl-5 text-gray-700 space-y-1">
-			<li>Desarrollo de proyectos personales — Godot, web apps, BSC Tokens</li>
-			<li>Prácticas escolares de redes y electrónica</li>
-			<li>Soporte técnico y mantenimiento de equipos</li>
-		</ul>
-
-		<hr class="my-6" />
-
-		<!-- Blog -->
-		<h2 class="text-2xl font-semibold mb-3">Blog Personal</h2>
-		<p class="text-gray-700">
-			Escribo artículos sobre tecnología, programación, electrónica y mis proyectos.
-			Visita mis publicaciones aquí:
-		</p>
-
-		<a href="/blog" class="inline-block mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-			Ir al Blog
-		</a>
-	</section>
+  <!-- Sección Contacto -->
+  <section id="contacto" class="min-h-screen p-8 bg-gray-100">
+    <h2 class="text-3xl font-bold mb-4">Contacto</h2>
+    <ContactForm />
+  </section>
 </Layout>
