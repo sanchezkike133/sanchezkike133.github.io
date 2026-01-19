@@ -1,49 +1,228 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ContactForm from '../components/ContactForm.astro';
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.jsx";
+import BlogCard from "../components/BlogCard.astro";
+import { getCollection } from "astro:content";
+
+const baseUrl = import.meta.env.BASE_URL;
+const normalizedBase = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
+
+// Obtener los 3 posts más recientes
+const recentPosts = (await getCollection("blog"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
 ---
 
 <Layout>
   <!-- Menú de navegación -->
-  <nav class="fixed top-0 left-0 w-full p-4 bg-gray-800 text-white flex justify-center space-x-6 z-50">
-    <a href="#principal" class="hover:underline">Principal</a>
-    <a href="#habilidades" class="hover:underline">Habilidades</a>
-    <a href="#proyectos" class="hover:underline">Proyectos</a>
-    <a href="#contacto" class="hover:underline">Contacto</a>
+  <nav
+    class="fixed top-0 left-0 w-full p-4 bg-gray-900/95 backdrop-blur-sm text-white flex justify-center space-x-8 z-50 shadow-lg"
+  >
+    <a
+      href="#principal"
+      class="hover:text-blue-400 transition-colors font-medium">Principal</a
+    >
+    <a
+      href="#habilidades"
+      class="hover:text-blue-400 transition-colors font-medium">Habilidades</a
+    >
+    <a
+      href="#proyectos"
+      class="hover:text-blue-400 transition-colors font-medium">Proyectos</a
+    >
+    <a href="#blog" class="hover:text-blue-400 transition-colors font-medium"
+      >Blog</a
+    >
+    <a
+      href="#contacto"
+      class="hover:text-blue-400 transition-colors font-medium">Contacto</a
+    >
   </nav>
 
   <!-- Sección Principal -->
-  <section id="principal" class="min-h-screen flex flex-col items-center justify-center bg-blue-100">
-    <h1 class="text-5xl font-bold">Hola, soy Kike</h1>
-    <p class="mt-4 text-xl">Bienvenido a mi portafolio</p>
+  <section
+    id="principal"
+    class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-600 text-white"
+  >
+    <div class="text-center px-4">
+      <h1 class="text-6xl md:text-7xl font-bold mb-4 animate-fade-in">
+        Hola, soy Kike
+      </h1>
+      <p class="text-xl md:text-2xl opacity-90 mb-8">
+        Estudiante de Ingeniería
+      </p>
+      <a
+        href="#habilidades"
+        class="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-opacity-90 hover:scale-105 transition-all shadow-lg"
+      >
+        Conoce más
+      </a>
+    </div>
   </section>
 
   <!-- Sección Habilidades -->
-  <section id="habilidades" class="min-h-screen p-8 bg-gray-100">
-    <h2 class="text-3xl font-bold mb-4">Habilidades</h2>
-    <ul class="list-disc ml-6 space-y-2">
-      <li>HTML / CSS / JavaScript</li>
-      <li>Astro / TailwindCSS</li>
-      <li>GitHub</li>
-      <li>Node.js / npm</li>
-	  <li>Circuitos electronicos con arduino</li>
+  <section
+    id="habilidades"
+    class="scroll-mt-20 min-h-screen py-20 px-8 bg-gray-50"
+  >
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-2 text-gray-900">Habilidades</h2>
+      <div class="w-20 h-1 bg-blue-600 mb-10"></div>
 
-    </ul>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div
+          class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100"
+        >
+          <h3 class="font-semibold text-gray-900 mb-2">Desarrollo Web</h3>
+          <p class="text-gray-600">HTML, CSS, JavaScript</p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100"
+        >
+          <h3 class="font-semibold text-gray-900 mb-2">Frameworks</h3>
+          <p class="text-gray-600">Astro, TailwindCSS</p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100"
+        >
+          <h3 class="font-semibold text-gray-900 mb-2">Herramientas</h3>
+          <p class="text-gray-600">GitHub, Node.js, npm</p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100"
+        >
+          <h3 class="font-semibold text-gray-900 mb-2">Electrónica</h3>
+          <p class="text-gray-600">Circuitos con Arduino</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Sección Proyectos -->
-  <section id="proyectos" class="min-h-screen p-8 bg-white">
-    <h2 class="text-3xl font-bold mb-4">Proyectos</h2>
-    <ul class="list-disc ml-6 space-y-2">
-      <li><a href="https://github.com/sanchezkike133/proyecto1" target="_blank" class="text-blue-600 hover:underline">Proyectos con c++</a></li>
-      <li><a href="https://github.com/sanchezkike133/proyecto2" target="_blank" class="text-blue-600 hover:underline">Proyecto con flask</a></li>
-      <li><a href="https://github.com/sanchezkike133/proyecto3" target="_blank" class="text-blue-600 hover:underline">Proyecto con arduino</a></li>
-    </ul>
+  <section id="proyectos" class="scroll-mt-20 min-h-screen py-20 px-8 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-2 text-gray-900">Proyectos</h2>
+      <div class="w-20 h-1 bg-blue-600 mb-10"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a
+          href="https://github.com/sanchezkike133/proyecto1"
+          target="_blank"
+          class="group block bg-gray-50 p-6 rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-lg transition-all"
+        >
+          <h3
+            class="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors"
+          >
+            Proyectos con C++
+          </h3>
+          <p class="text-gray-600 text-sm">Programas y algoritmos en C++</p>
+        </a>
+
+        <a
+          href="https://github.com/sanchezkike133/proyecto2"
+          target="_blank"
+          class="group block bg-gray-50 p-6 rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-lg transition-all"
+        >
+          <h3
+            class="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors"
+          >
+            Proyecto con Flask
+          </h3>
+          <p class="text-gray-600 text-sm">Aplicación web con Python Flask</p>
+        </a>
+
+        <a
+          href="https://github.com/sanchezkike133/proyecto3"
+          target="_blank"
+          class="group block bg-gray-50 p-6 rounded-xl border border-gray-200 hover:border-blue-400 hover:shadow-lg transition-all"
+        >
+          <h3
+            class="font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors"
+          >
+            Proyecto con Arduino
+          </h3>
+          <p class="text-gray-600 text-sm">
+            Circuitos y programación electrónica
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Blog -->
+  <section id="blog" class="scroll-mt-20 min-h-screen py-20 px-8 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-4xl font-bold mb-2 text-gray-900">Blog</h2>
+      <div class="w-20 h-1 bg-blue-600 mb-10"></div>
+
+      {
+        recentPosts.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            {recentPosts.map((post) => (
+              <BlogCard
+                id={post.id}
+                title={post.data.title}
+                date={post.data.date.toISOString().split("T")[0]}
+                image={post.data.image}
+                description={post.data.description}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-gray-600 mb-10">
+            Próximamente publicaré artículos aquí.
+          </p>
+        )
+      }
+
+      <a
+        href={`${normalizedBase}blog/`}
+        class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-md"
+      >
+        Ver todos los artículos
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
   </section>
 
   <!-- Sección Contacto -->
-  <section id="contacto" class="min-h-screen p-8 bg-gray-100">
-    <h2 class="text-3xl font-bold mb-4">Contacto</h2>
-    <ContactForm />
+  <section id="contacto" class="scroll-mt-20 min-h-screen py-20 px-8 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold mb-2 text-gray-900 text-center">
+        Contacto
+      </h2>
+      <div class="w-20 h-1 bg-blue-600 mb-6 mx-auto"></div>
+      <ContactForm client:load />
+    </div>
   </section>
 </Layout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+  }
+</style>

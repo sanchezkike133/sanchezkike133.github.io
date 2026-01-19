@@ -1,0 +1,11 @@
+---
+// contact/index.astro - Página de contacto
+import Layout from "../../layouts/Layout.astro";
+import ContactForm from "../../components/ContactForm.jsx";
+---
+
+<Layout>
+  <div class="pt-24 pb-12 px-4 max-w-4xl mx-auto">
+    <ContactForm client:load />
+  </div>
+</Layout>
